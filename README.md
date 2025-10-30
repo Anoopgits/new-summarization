@@ -10,9 +10,9 @@ The goal is to compare the performance of a traditional sequence-to-sequence LST
 
 ---
 
-## 🚀 Project Overview
+##  Project Overview
 
-### 🔹 Extractive vs. Abstractive Summarization
+###  Extractive vs. Abstractive Summarization
 
 * **Extractive** → Selects key sentences from the text.
 * **Abstractive** → Generates new sentences to summarize the context.
@@ -133,23 +133,6 @@ gcsfs==2025.3.0
 
 ---
 
-##  Example Usage
-
-```python
-from transformers import T5Tokenizer, TFT5ForConditionalGeneration
-
-# Load fine-tuned model
-tokenizer = T5Tokenizer.from_pretrained("fine_tuned_t5_small")
-model = TFT5ForConditionalGeneration.from_pretrained("fine_tuned_t5_small")
-
-text = "India won the cricket match against Australia by 5 wickets after a thrilling chase."
-inputs = tokenizer("summarize: " + text, return_tensors="tf", max_length=512, truncation=True)
-
-summary_ids = model.generate(inputs["input_ids"], max_length=50, num_beams=4, early_stopping=True)
-print("Generated Summary:", tokenizer.decode(summary_ids[0], skip_special_tokens=True))
-```
-
----
 
 ##  Results & Observations
 
